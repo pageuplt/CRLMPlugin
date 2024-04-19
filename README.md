@@ -2,6 +2,6 @@ To install the plugin download and run `install.bat` provided [here](https://git
 
 # Screenshots
 
-![alt text](image.png)
+![alt text](images/image.png)
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)

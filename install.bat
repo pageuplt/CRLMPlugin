@@ -4,17 +4,20 @@ setlocal enabledelayedexpansion
 set "CRLM_PLUGIN_VERSION=1.0.0"
 set "CRLM_PLUGIN_URL=https://github.com/pageuplt/CRLMPlugin/releases/latest/download/CRLM.dll"
 
-if not exist "CRLM.dll" (
-    echo "Downloading CRLM.dll"
-    powershell -Command "Invoke-WebRequest -Uri '%CRLM_PLUGIN_URL%' -OutFile 'CRLM.dll'"
-
-    if not exist "CRLM.dll" (
-        echo "Failed to download CRLM.dll"
-        exit /b 1
-    )
-
-    echo "CRLM.dll downloaded successfully"
+if exist "CRLM.dll" (
+    @REM remove
+    del /f /q "CRLM.dll"
 )
+
+echo "Downloading CRLM.dll"
+powershell -Command "Invoke-WebRequest -Uri '%CRLM_PLUGIN_URL%' -OutFile 'CRLM.dll'"
+
+if not exist "CRLM.dll" (
+    echo "Failed to download CRLM.dll"
+    exit /b 1
+)
+
+echo "CRLM.dll downloaded successfully"
 
 @REM find the BakkesMod directory
 set "BMM_DIR=%APPDATA%\bakkesmod\bakkesmod\"
